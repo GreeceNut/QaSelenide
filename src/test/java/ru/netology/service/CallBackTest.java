@@ -91,11 +91,11 @@ public class CallBackTest {
         //Кликаем на календарь
         form.$("[data-test-id=date] input").click();
         //сравниваем первую доступную дату с датой данной по условию
-        if (!dateMeet.equals(date(7, "dd.MM.yyyy"))) {
+        if (!date(3, "MM").equals(date(7, "MM"))) {
             //если месяцы расходятся, то нажимаем на стрелку месяца
             $("[data-step='1']").click();
         }
-        $$("[data-day]").findBy(Condition.text(date(7, "dd"))).click();
+        $$("[data-day]").findBy(Condition.text(date(7, "d"))).click();
 
         form.$("[data-test-id=name] input").setValue("Василий Мамин-Сибиряк");
         form.$("[data-test-id=phone] input").setValue("+79270000000");
