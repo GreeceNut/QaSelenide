@@ -45,7 +45,8 @@ public class CallBackTest {
         form.$(".button").click();
 
         $("[data-test-id=notification].notification_visible")
-                .shouldBe(exist, Duration.ofSeconds(15));
+                .shouldBe(visible, Duration.ofSeconds(15))
+                .shouldHave(text(dateMeet));
 
     }
 
@@ -59,7 +60,7 @@ public class CallBackTest {
 
         //взаимодействуем с элементами
 
-        //Вводим в поле Город Мо
+        //Вводим в поле Город "Мо"
         form.$("[data-test-id=city] input").setValue("Мо");
         //Ищем коллекцию города, а затем ищем нужный город, в данном случаем Москва, и кликаем
         $$(".menu-item").findBy(Condition.text("Москва")).click();
@@ -73,7 +74,8 @@ public class CallBackTest {
         form.$(".button").click();
 
         $("[data-test-id=notification].notification_visible")
-                .shouldBe(exist, Duration.ofSeconds(15));
+                .shouldBe(visible, Duration.ofSeconds(15))
+                .shouldHave(text(dateMeet));
 
     }
 
@@ -86,8 +88,7 @@ public class CallBackTest {
         SelenideElement form = $("form");
         form.$("[data-test-id=city] input").setValue("Москва");
 
-
-        String dateMeet = date(3, "dd.MM.yyyy");
+        String dateMeet = date(7, "dd.MM.yyyy");
         //Кликаем на календарь
         form.$("[data-test-id=date] input").click();
         //сравниваем первую доступную дату с датой данной по условию
@@ -103,7 +104,8 @@ public class CallBackTest {
         form.$(".button").click();
 
         $("[data-test-id=notification].notification_visible")
-                .shouldBe(exist, Duration.ofSeconds(15));
+                .shouldBe(visible, Duration.ofSeconds(15))
+                .shouldHave(text(dateMeet));
 
     }
 }
